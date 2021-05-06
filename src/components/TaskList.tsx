@@ -24,6 +24,7 @@ export function TaskList() {
       isComplete: false,
     }
     setTasks([...tasks, task])
+    setNewTaskTitle('')
   }
 
   function handleToggleTaskCompletion(id: number) {
@@ -41,9 +42,7 @@ export function TaskList() {
   }
 
   function handleRemoveTask(id: number) {
-    const taskIndex = tasks.findIndex(task => task.id === id)
-    let remainingTasks = tasks.slice();
-    remainingTasks.splice(taskIndex, 1)
+    const remainingTasks = tasks.filter(task => task.id !== id);
     setTasks(remainingTasks)
   }
 
